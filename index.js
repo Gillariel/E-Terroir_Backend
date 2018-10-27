@@ -49,17 +49,16 @@ app.get('/user/:id', function (req, res) {
 });
 
 //Post a User
-// [Works]
+//[Works]
 app.post('/user', function(req, res){
-    // example of catching exeception and react with correct HTTP code
     db.collection('User').doc().set({
         Email: req.body.Email,
         Mdp: req.body.Mdp,
         Pseudo: req.body.Pseudo,
-        Address: req.body.Address
+        Address: req.body.Address,
+        Historique:{}
     }).then(() => { return res.sendStatus(200); })
     .catch(() => { return res.sendStatus(404); });
-    return res.sendStatus(403);
 });
 
 // I Did not check til here
@@ -67,6 +66,7 @@ app.post('/user', function(req, res){
 // FARMER
 
 //Get all Farmer
+// [Works]
 app.get('/farmer', function (req, res) {
     db.collection('Farmer').get()
     .then((snap) => {
@@ -81,8 +81,10 @@ app.get('/farmer', function (req, res) {
 });
 
 //Get Farmer by Id
-app.get('/farmerId/:id', function (req, res) {
-    db.collection('Farmer').get().where('id == :id')
+app.get('/farmer/:id', function (req, res) {
+    var id = req.params.id;
+
+    db.collection('Farmer').where(admin.firestore.FieldPath.documentId(), '==', id).get()
     .then((snap) => {
         var datas = [];
         snap.forEach((doc) => {
@@ -95,175 +97,122 @@ app.get('/farmerId/:id', function (req, res) {
 });
 
 //Post a Farmer
-app.post('/newFarmer', function(req, res){
+app.post('/farmer', function(req, res){
     db.collection('Farmer').doc().set({
         Nom: req.body.Nom,
         Prenom: req.body.Prenom,
         Lattitude: req.body.Lattitude,
         Longitude: req.body.Longitude,
         Product :{}
-    });
-    return res.sendStatus(200);
-});
-
-// CATEGORIE
-
-//Get all Categorie
-app.get('/categorie', function (req, res) {
-    db.collection('Categorie').get()
-    .then((snap) => {
-        var datas = [];
-        snap.forEach((doc) => {
-            datas.push(doc.data());
-        });
-        return res.json(datas);
-    }).catch(err => {
-        console.log("errror " + err);
-    });
-});
-
-//Get Categorie by Id
-app.get('/categorieId/:id', function (req, res) {
-    db.collection('Categorie').get().where('id == :id')
-    .then((snap) => {
-        var datas = [];
-        snap.forEach((doc) => {
-            datas.push(doc.data());
-        });
-        return res.json(datas);
-    }).catch(err => {
-        console.log("errror " + err);
-    });
-});
-
-//Post a Categorie
-app.post('/newCategorie', function(req, res){
-    db.collection('Categorie').doc().set({
-        Nom: req.body.Nom,
-        Product :{}
-    });
-    return res.sendStatus(200);
+    }).then(() => { return res.sendStatus(200); })
+    .catch(() => { return res.sendStatus(404); });
 });
 
 //PRODUCT
 
 //Get Product of one Farmer
 app.get('/products/:id', (req, res) => {
-    db.collection('Farmer').get({_id: req.param.id})
+    var id = req.params.id;
+    db.collection('Farmer').doc(id).collection('Product').get()
     .then((snapshot) => {
-        var datas = {};
-        snapshot.forEach((doc) => {
-            console.log('farmer : ' + doc.data().Name);
-            doc.collection('products').get()
-            .then((snapshot2) => {
-                snapshot2.forEach((doc2) => {
-                    datas.push({
-                        product: doc2.data(),
-                        farmer: doc
-                    });
-                    return res.json(datas);
-                });
-            }).catch((err2) => {
-                console.log('Error 2 getting documents', err2);
-            });
-        });
+            var datas = [];
+            console.log("before second forLoop");
+            snapshot.forEach((doc2) => {
+                datas.push({
+                    product: doc2.data(),
+               });
+               return res.json(datas);
+            })
     })
-    .catch((err) => {
-        console.log('Error getting documents', err);
-    });
-});
-
-//Get Product by Id
-
-app.get('/productsId/:id', (req, res) => {
-    db.collection('farmers').get()
-    .then((snapshot) => {
-        var datas = {};
-        snapshot.forEach((doc) => {
-            console.log('farmer : ' + doc.data().Name);
-            doc.collection('products').get({_id: req.param.id})
-            .then((snapshot2) => {
-                snapshot2.forEach((doc2) => {
-                    datas.push({
-                        product: doc2.data(),
-                        farmer: doc
-                    });
-                    return res.json(datas);
-                });
-            }).catch((err2) => {
-                console.log('Error 2 getting documents', err2);
-            });
-        });
-    })
-    .catch((err) => {
-        console.log('Error getting documents', err);
-    });
 });
 
 //Post a Product
 
-app.post('/newProduct/:id', (req, res)=>{
-    
+app.post('/products/:id', (req, res)=>{
+    var id = req.params.id;
+    db.collection('Farmer').doc(id).collection('Product').doc().set({
+        Nom: req.body.Nom,
+        Description : req.body.Description,
+        Prix : req.body.Prix,
+        Categorie : req.body.Categorie
+    }).then(() => { return res.sendStatus(200); })
+    .catch(() => { return res.sendStatus(404); });
 })
 
 //HISTORIQUE
 
 //Get Historique of one User
-app.get('/historique/:id', (req, res) => {
-    db.collection('User').get({_id: req.param.id})
+app.get('user/:id/historique/', (req, res) => {
+    var id = req.params.id;
+    db.collection('User').doc(id).collection('Historique').get()
     .then((snapshot) => {
-        var datas = {};
-        snapshot.forEach((doc) => {
-            console.log('user : ' + doc.data().Name);
-            doc.collection('Historique').get()
-            .then((snapshot2) => {
-                snapshot2.forEach((doc2) => {
-                    datas.push({
-                        historique: doc2.data(),
-                        user: doc
-                    });
-                    return res.json(datas);
-                });
-            }).catch((err2) => {
-                console.log('Error 2 getting documents', err2);
-            });
-        });
+            var datas = [];
+            console.log("before second forLoop");
+            snapshot.forEach((doc2) => {
+                datas.push({
+                    historique: doc2.data(),
+               });
+               return res.json(datas);
+            })
     })
-    .catch((err) => {
-        console.log('Error getting documents', err);
-    });
-});
-
-//Get Product by Id
-
-app.get('/historique/:id', (req, res) => {
-    db.collection('User').get()
-    .then((snapshot) => {
-        var datas = {};
-        snapshot.forEach((doc) => {
-            console.log('User : ' + doc.data().Pseudo);
-            doc.collection('Historique').get({_id: req.param.id})
-            .then((snapshot2) => {
-                snapshot2.forEach((doc2) => {
-                    datas.push({
-                        historique: doc2.data(),
-                        user: doc
-                    });
-                    return res.json(datas);
-                });
-            }).catch((err2) => {
-                console.log('Error 2 getting documents', err2);
-            });
-        });
-    })
-    .catch((err) => {
-        console.log('Error getting documents', err);
-    });
 });
 
 //Post a Historique
 
+app.post('/historique/:id', (req, res)=>{
+    var id = req.params.id;
+    db.collection('Historique').doc(id).collection('Product').doc().set({
+        Product :{
+            Date: req.body.Date,
+            PrixTotal : req.body.PrixTotal,
+            IdProduct : req.body.IdProduct
+        }
+    }).then(() => { return res.sendStatus(200); })
+    .catch(() => { return res.sendStatus(404); });
+})
+
 //NOTE
+
+//Get all Note
+app.get('/note', function (req, res) {
+    db.collection('Note').get()
+    .then((snap) => {
+        var datas = [];
+        snap.forEach((doc) => {
+            datas.push(doc.data());
+        });
+        return res.json(datas);
+    }).catch(err => {
+        console.log("errror " + err);
+    });
+});
+
+//Get Note by DOCUMENT Id 
+app.get('/note/:id', function (req, res) {
+    var id = req.params.id;
+
+    db.collection('Note').where(admin.firestore.FieldPath.documentId(), '==', id).get()
+    .then((snap) => {
+        var datas = [];
+        snap.forEach((doc) => {
+            datas.push(doc.data());
+        });
+        return res.json(datas);
+    }).catch(err => {
+        console.log("error " + err);
+    });
+});
+
+//Post a Note
+app.post('/note', function(req, res){
+    db.collection('Note').doc().set({
+        note : req.body.Note,
+        commentaire : req.body.Commentaire,
+        idUser: req.body.IdUser,
+        idProduct : req.body.IdProduct
+    }).then(() => { return res.sendStatus(200); })
+    .catch(() => { return res.sendStatus(404); });
+});
 
 /**
  * Creating a document example
