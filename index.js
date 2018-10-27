@@ -16,6 +16,7 @@ var db = admin.firestore();
 // USER
 
 //Get all User
+// [Works]
 app.get('/user', function (req, res) {
     db.collection('User').get()
     .then((snap) => {
@@ -29,9 +30,13 @@ app.get('/user', function (req, res) {
     });
 });
 
-//Get User by Id
-app.get('/userId/:id', function (req, res) {
-    db.collection('User').get().where('id == :id')
+//Get User by DOCUMENT Id (really worth it?)
+// [Works]
+app.get('/user/:id', function (req, res) {
+    // This is how we get the GET params from the url
+    var id = req.params.id;
+
+    db.collection('User').where(admin.firestore.FieldPath.documentId(), '==', id).get()
     .then((snap) => {
         var datas = [];
         snap.forEach((doc) => {
@@ -39,20 +44,25 @@ app.get('/userId/:id', function (req, res) {
         });
         return res.json(datas);
     }).catch(err => {
-        console.log("errror " + err);
+        console.log("error " + err);
     });
 });
 
 //Post a User
-app.post('/newUser', function(req, res){
+// [Works]
+app.post('/user', function(req, res){
+    // example of catching exeception and react with correct HTTP code
     db.collection('User').doc().set({
         Email: req.body.Email,
         Mdp: req.body.Mdp,
         Pseudo: req.body.Pseudo,
-        Adresse: req.body.Adresse
-    });
-    return res.sendStatus(200);
+        Address: req.body.Address
+    }).then(() => { return res.sendStatus(200); })
+    .catch(() => { return res.sendStatus(404); });
+    return res.sendStatus(403);
 });
+
+// I Did not check til here
 
 // FARMER
 
