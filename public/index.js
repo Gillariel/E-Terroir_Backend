@@ -1,3 +1,4 @@
+const functions = require('firebase/firebase-functions');
 const express = require ('express');
 const bodyParser = require('body-parser');
 
@@ -11,11 +12,15 @@ app.get('/login', (req, res) => {
     login.login();
 });
 
+functions
+
 // Handling Firebase Firestore
 const admin = require('firebase-admin');
 var serviceAccount = require('./e-terroir-gcp.json');
 admin.initializeApp({ credential: admin.credential.cert(serviceAccount) });
 var db = admin.firestore();
+
+
 
 // USER
 
