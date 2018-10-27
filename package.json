@@ -13,6 +13,10 @@
     "express": "^4.16.4",
     "firebase": "^5.5.6",
     "firebase-admin": "^6.1.0",
+<<<<<<< HEAD
     "firebaseui": "^3.4.1"
+=======
+    "node.js": "0.0.0"
+>>>>>>> 595953be597a6e0be9e13165af82c6f0146a4a2a
   }
 }
