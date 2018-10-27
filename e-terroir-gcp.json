@@ -1,0 +1,12 @@
+{
+  "type": "service_account",
+  "project_id": "e-terroir",
+  "private_key_id": "8357e99cc8ded54828599cf494272889d93962a0",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvAIBADANBgkqhkiG9w0BAQEFAASCBKYwggSiAgEAAoIBAQCWoac6EyIij6M9\nk4IrSssxjjY1UK+8kPemcaCX9aP6IdCP10Z/DFdw/JG54XrTFsbwFjOFh7VuvkII\n+FDCvbrIBhSime2Z9dQ7PYIP71d4D4A5ewoVc5VA+HKHoN2NL2PqQGQC0OfVCxS3\n/WFFNKo4Q6xFE9HGHPssnJtilrCrFCimLOaxYkfuc1EZbv0R4TqAFnapoXIu8Fzp\nJUszqCr2S0ysoGjmeg9HDt4dUrh60Aw+iYQ0dY7QlCCuWDXVQbL+QIYgvTgnf0Ur\nLzRlw35PejlLhF0jPnSUrL39zZHnlforEHtFehOvZu5ahNaHkKEp33WjCygv2cPx\nGW++yGOHAgMBAAECggEAAKeRCGSALYtE9Yp4MmhkS8rnMh1mbhjW4qhYdfLfGS/N\nbiO6RVaidlpxeRjzqi8EXm7baFCjJ0SKz+sGCIhR0RtpqEHMjQTvhfIXsWFRzXwd\neSudD6zx+bvxgcAWIc5JIKZkjW9v9eRApku+N9JpjPKcntCClzVxLIv0PcKluywB\nniH/dSzDuvv1l2yJSZa/C54zBelO6IfYsa2ymeEQzVNBsre2thSGELzWbnTHb8yR\nlWevipXB8IDM76aotYMsksSBbjZaCAkscJHRe9E3Yizcalhb8hudWOiDurXpCUzE\nP5lgrVqGfBizvwAwysvgAK05PTkrQIVqUHxX9xiObQKBgQDKCVqa4VrmUA4QsshY\nduN5+rZo8qro6KT+rs/f41p7VBeSuGjjSWl+kiPf/5kLJ7j8+WUMmXf7S6yqmiCz\nNEV04D5NNfw9nUKJrzbkJFJACbDC5nGXjE6PJi9Eovcky7mySzfCT74s6T0F8jT1\ne91MPJfmIxCzv/u9Sf6kManycwKBgQC+3WAuHxABmIKnwOCwsU42mCk4kiFlp7oN\n8c+dIoBP7q+gzqt7hoJGwp4MCsmBJJkfmkxCtgKw4o++GberDf0AFG9T0TOxcXYH\nSel/ZDEs11IlPgtiGIUoUQOcVrssIiMwHAZykmnsge879AXXCnVsMCyauE7IcZQ0\nljRED6LBnQKBgB0K/TBYhuWmym7SFITLCmZFiSVLBRCYKOfHn3BS0XX7H6xiwAk0\nS2r7fRa9OnXlDu2muET4ZswEE90ubNb2A6oKdkpJIWqGCcObIWvoYL595iAOWnPr\nontnhNH8D0UF2DruHyTaq77vBGuvZreHR8emyjs1/TepuHl8gpN95C1LAoGAJ8nC\naRr0nUCLzCi7Llpn8Z2ayj48VBK5CHsmSp2Mnh0l46HxwZhyxAmCJQSCqTdV7G6g\nAzAqM3GngXue/Du4SDH6W0C7Q/xhHHfeAz6BudVRPI5IlTSDXbo1xHuYHUUojLjq\n5yt6hWE43Aisxv1ZKSqJwd82HTcALE47qwyPY0kCgYByV6klK47dyyKz2GkVF2iw\n95VX7bRaOnpc3XDP7d6WBl++a8gWdPFkGyuEfEguUfw2uf9wM4gfua5nX4k4TYik\n6iBgnx2eAFkv2GXQ8CrnAxuTeVVj0tu7QTeYbjrAonuj0W4AmxoVZwGcZPPY0vmJ\nL/ku8+yvQxr1oUkDfiDpnA==\n-----END PRIVATE KEY-----\n",
+  "client_email": "e-terroir@appspot.gserviceaccount.com",
+  "client_id": "103535342252789073872",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/e-terroir%40appspot.gserviceaccount.com"
+}

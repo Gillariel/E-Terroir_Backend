@@ -1,0 +1,12 @@
+{
+  "type": "service_account",
+  "project_id": "e-terroir",
+  "private_key_id": "913c80da6b945448c791ff6d8103e73d42f46166",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvAIBADANBgkqhkiG9w0BAQEFAASCBKYwggSiAgEAAoIBAQDR5cFOMRiPCX8x\nvjkIVeB9E/m3TAGqDxc6P0WImSlMNX7aLYZZeef0N5gEmT/68SzZaJILhD8TCefz\nf4+ARrcF7d1pUok3qOGIYIKUvndr9bWAxCcb2TtLv3L+MP0xXf2HTnoxG6NAMMBo\n+Re9SrcQLl1zjHNePWXooOvLRrB3Ka1yifTVa7jZ/N3QjFn9IQ6D5nXopwlZQGOw\nGDgWYTsOko+v0reD7KTVrozjWddeRYG0xeL+y6NHr0p+ArRD4tXCjD4HyQrjh74T\n9SLkTPCb4tvtjBaSAeDmrrh4y7e4rwu36hJfcuzr6uBrqtiPfPcbAqILTfmxBUUu\nfVxJ7VxxAgMBAAECggEAFjyy9JTopwAYvM0230Zd21J6R8GNLED0sy6QhXlt3Hg5\nwWVGUQTEdA/5vS7743BD/J/YAnwBxK4YJ/4b1rlnMCvJo8a4k9rX/f9KMPZW0kC8\noxuPkHiSECMvIcql4GI2ocGeL3AKpRp6dVntJRhHzwvidFiXwQ8HKhShC9moM2TX\n7zJckn0JQ2tUPkf9xvbu/2oxrnRtHeRNNWX/4Mx8Arkqkpvh3lVuU9EkN6ImWsIJ\nWDbgD6hBm28h6DNSkOVjFqyazQuQyYP74skbJZ/55AUSS1Z2DgYkQSYR7upARKDu\nXjaXqqk6HkSNblx5WLzKp3OL1vM2v/EpZup/w/RmiwKBgQD2Kn0ZhXxZa+sDlVMk\ngGj+sAKapPLb7iBe/CwFMYOqlns5MFrBs7l7aUBN80it14CzG6qIH2AjhhW1n6WV\nK4m/mwWioUPo3FPYjBHQKo3Lq3rZV/V8+WS4k2kcO5551jZIy8hBDVkqzCjqQDX3\nOB6fjPMhDFTwc/xwMTX2eO3jowKBgQDaSFpLOgxZnkmD5PMQ9k+iA37W2+u+xRF2\nhyEXj89Fij5WFQrwtgRGUKGX4nEpcZ133/h1et4jlaWzDbKHabYU1Lgc9XkWqBpc\nb2/SXq7+i2G5bg2qdXy7T+94krwXQTEKrg4xzV0S9RE5+N+TnbNaApoKkTG3sWPB\nREuxT5/g2wKBgDN4aNXYQkrUNLx4EX1VWB7AoJrDGICBxsT1hyLC2pvlgPhRMvjD\nYmn6dNaXor+uiptoknyJyulClPF34wBQrSmh+Uiq3W8n+mQRzXuwGhvWzAX7zTmH\nT9cEA3tCv/0LnCgWa9WmO9ml/HwWVvJNCqIjr4ZedLgeGE9BCt5xJJRvAoGAUwU9\nwmrbk6JOV6nWgNcNxpMJxPJ0IWSWlbwja/C4ZryDpP3v4Ul5Kr00GK55V8fsmlFH\nEHeg0WvzT7yf8DzWkemt9OWwHlvlWs7PevWkHRAqJPqkm/Z/cEagz/0PKNEUs/kr\nUOnIwpMO8Dul3WEXe96NdANxI2qGhFVTbKbaKg0CgYB90CAGXjgCxG9l9lXUuFdv\nTvQPucFkQ5+5VCqcauOo5M/QE5vLntrJIDQgqQEr/YVGC57sHRKT4EteQjgxaY7k\nOUlxACK8n4ND0zVzMOJnJEREb0L5nxFPJu4fiGBu9LoJi/51GSw4YuoTMAklfLL3\n2GbOcyYoJiKPtAXORYnLOA==\n-----END PRIVATE KEY-----\n",
+  "client_email": "firebase-adminsdk-wllqb@e-terroir.iam.gserviceaccount.com",
+  "client_id": "115734232712837787187",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/firebase-adminsdk-wllqb%40e-terroir.iam.gserviceaccount.com"
+}
