@@ -32,17 +32,17 @@ app.get('/', (req, res) => {
 
 // USER
 
-app.get('/product/all', (req, res) => {
-    db.collection('Product').get()
-    .then((snapshot) => {
-        var datas = [];
-        snapshot.forEach((doc) => {
-            datas.push(doc.data());
+// app.get('/product/all', (req, res) => {
+//     db.collection('Product').get()
+//     .then((snapshot) => {
+//         var datas = [];
+//         snapshot.forEach((doc) => {
+//             datas.push(doc.data());
             
-        });
-        return res.json(datas);
-    })
-});
+//         });
+//         return res.json(datas);
+//     })
+// });
 
 //Get all User
 // [Works]
@@ -146,16 +146,18 @@ app.get('/product/all', (req, res) => {
         var datas = [];
         snapshot.forEach((doc) => {
             var images = [];
-            var data = {};
-            data = { 
+            var data = { 
                 NameFarmer: doc.data().NameFarmer,
                 Price: doc.data().Price,
                 Location: doc.data().Location,
                 Description: doc.data().Description,
                 Name: doc.data().Name
-            }
+            };
             images.push(doc.data().UrlPictures);
-            datas.push({data, images});
+            datas.push({
+                "Data": data,
+                "Images": images
+            });
         });
         return res.json(datas);
     });
