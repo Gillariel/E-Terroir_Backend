@@ -1,18 +1,24 @@
-const functions = require('firebase/firebase-functions');
+const functions = require('firebase-functions');
 const express = require ('express');
 const bodyParser = require('body-parser');
+const cors = require('cors');
 
 const app = express();
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
+app.use(cors({
+    origin: '*',
+    preflightContinue: false
+}));
+//const login = require('./Auth');
 
-const login = require('./Auth');
-
-app.get('/login', (req, res) => {
+/*app.get('/login', (req, res) => {
     login.login();
-});
+});*/
 
-functions
+const cloudFonc = functions.https.onRequest(app);
+
+module.exports = { cloudFonc }
 
 // Handling Firebase Firestore
 const admin = require('firebase-admin');
@@ -20,9 +26,25 @@ var serviceAccount = require('./e-terroir-gcp.json');
 admin.initializeApp({ credential: admin.credential.cert(serviceAccount) });
 var db = admin.firestore();
 
-
+app.get('/', (req, res) => {
+    res.sendFile('index.html');
+});
 
 // USER
+
+app.get('/product/all', (req, res) => {
+        const products = [ 
+            { price: 0.59, location: "Louvain" , agriculteur: "Mr Carotte", name: "Carotte" },
+            { price: 0.54, location: "Namur" , agriculteur: "Mme Carotte", name: "Carotte" },
+            { price: 0.49, location: "Flawinne" , agriculteur: "Senior Carotte", name: "Carotte" },
+            { price: 1.59, location: "Louvain" , agriculteur: "Mr Steak", name: "Steak Hâché" },
+            { price: 2.01, location: "Namur" , agriculteur: "Mme Steak", name: "Steak Hâché" },
+            { price: 0.09, location: "Louvain" , agriculteur: "Senior Spinazi", name: "Épinard" },
+            { price: 1.01, location: "Namur" , agriculteur: "El Haricos", name: "Épinard"},
+            { price: 1.47, location: "Liège" , agriculteur: "Mcchicken", name: "Poulet"}
+        ]
+    return res.json(products);
+});
 
 //Get all User
 // [Works]

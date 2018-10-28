@@ -1,4 +1,4 @@
-const firebase = require('firebase');
+/*const firebase = require('firebase');
 const firebaseui = require('firebaseui');
 const ui = new firebaseui.auth.AuthUI(firebase.auth());
 
@@ -22,4 +22,4 @@ function login() {
         });
         ui.disableAutoSignIn();
     }
-}
+}*/
