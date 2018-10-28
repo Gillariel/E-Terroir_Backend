@@ -119,19 +119,15 @@ app.post('/farmer', function(req, res){
 
 //PRODUCT
 
-//Get Product of one Farmer
-app.get('/products/:id', (req, res) => {
-    var id = req.params.id;
-    db.collection('Farmer').doc(id).collection('Product').get()
+//Get Product
+app.get('/products/all', (req, res) => {
+    db.collection('Product').get()
     .then((snapshot) => {
-            var datas = [];
-            console.log("before second forLoop");
-            snapshot.forEach((doc2) => {
-                datas.push({
-                    product: doc2.data(),
-               });
-               return res.json(datas);
-            })
+        var datas = [];
+        snap.forEach((doc) => {
+            datas.push(doc.data());
+        });
+        return res.json(datas);
     })
 });
 
