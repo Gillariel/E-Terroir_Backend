@@ -33,17 +33,15 @@ app.get('/', (req, res) => {
 // USER
 
 app.get('/product/all', (req, res) => {
-        const products = [ 
-            { price: 0.59, location: "Louvain" , agriculteur: "Mr Carotte", name: "Carotte" },
-            { price: 0.54, location: "Namur" , agriculteur: "Mme Carotte", name: "Carotte" },
-            { price: 0.49, location: "Flawinne" , agriculteur: "Senior Carotte", name: "Carotte" },
-            { price: 1.59, location: "Louvain" , agriculteur: "Mr Steak", name: "Steak Hâché" },
-            { price: 2.01, location: "Namur" , agriculteur: "Mme Steak", name: "Steak Hâché" },
-            { price: 0.09, location: "Louvain" , agriculteur: "Senior Spinazi", name: "Épinard" },
-            { price: 1.01, location: "Namur" , agriculteur: "El Haricos", name: "Épinard"},
-            { price: 1.47, location: "Liège" , agriculteur: "Mcchicken", name: "Poulet"}
-        ]
-    return res.json(products);
+    db.collection('Product').get()
+    .then((snapshot) => {
+        var datas = [];
+        snapshot.forEach((doc) => {
+            datas.push(doc.data());
+            
+        });
+        return res.json(datas);
+    })
 });
 
 //Get all User
@@ -142,15 +140,25 @@ app.post('/farmer', function(req, res){
 //PRODUCT
 
 //Get Product
-app.get('/products/all', (req, res) => {
+app.get('/product/all', (req, res) => {
     db.collection('Product').get()
     .then((snapshot) => {
         var datas = [];
-        snap.forEach((doc) => {
-            datas.push(doc.data());
+        snapshot.forEach((doc) => {
+            var images = [];
+            var data = {};
+            data = { 
+                NameFarmer: doc.data().NameFarmer,
+                Price: doc.data().Price,
+                Location: doc.data().Location,
+                Description: doc.data().Description,
+                Name: doc.data().Name
+            }
+            images.push(doc.data().UrlPictures);
+            datas.push({data, images});
         });
         return res.json(datas);
-    })
+    });
 });
 
 //Post a Product
